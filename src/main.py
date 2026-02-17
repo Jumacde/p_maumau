@@ -29,4 +29,4 @@ def main():
     
 
 if __name__ == "main":    
-    Maumau()
+    main()
