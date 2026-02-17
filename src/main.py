@@ -42,10 +42,15 @@ def dealCards(numOfPlayers, nameList):
     print("deal cards for " + str(numOfPlayers) + "players.")
     # 4. deal cards to each player.
     for i in range(numOfPlayers):
-        hand.append(deck[i*5:(i+1)*5])
+        if numOfPlayers == 2:
+            playerCards = deck[i*7:(i+1)*7]
+        elif numOfPlayers == 3:
+            playerCards = deck[i*6:(i+1)*6]
+        elif numOfPlayers == 4:
+            playerCards = deck[i*5:(i+1)*5]
+        hand.append(playerCards)
         print(nameList[i] + " has " + str(hand[i]))
-
-
+        return hand
 
 def main():
     print("")
