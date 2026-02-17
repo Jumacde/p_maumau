@@ -1,5 +1,8 @@
+import random
+
 class Maumau():
-    def __init__(self, numOfPlayers, name):
+    def __init__(self, numOfPlayers, name, cards):
+        self.cards = cards
         self.numOfPlayers = numOfPlayers
         self.name = name
 
@@ -16,7 +19,7 @@ def setNumOfPlayers():
         print("error: number of players must be between 2 and 4")   
         return setNumOfPlayers()
 
-# input number of players
+# input number of players.
 def inputName(numOfPlayers):
     nameList = []
     for i in range(numOfPlayers):
@@ -24,12 +27,24 @@ def inputName(numOfPlayers):
         nameList.append(name)
     return nameList
 
+# create cards and deal it to each player.
+def dealCards(numOfPlayers, nameList):
+    card = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] 
+    deck = card * 4
+    random.shuffle(deck)
+    # to check cards and deck
+    #print("deck has " + str(len(deck)) + " cards.")
+    #print(deck)
+    print("deal cards for " + str(numOfPlayers) + "players.")
+
+
 def main():
     print("")
     print("welcome to maumau")
     numOfPlayers = setNumOfPlayers()
     nameList = inputName(numOfPlayers)
     print(nameList)
+    dealCards(numOfPlayers, nameList)
 
 if __name__ == "__main__":    
     main()
