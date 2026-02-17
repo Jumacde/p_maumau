@@ -1,8 +1,9 @@
 import random
 
 class Maumau():
-    def __init__(self, numOfPlayers, name, cards):
+    def __init__(self, numOfPlayers, name, cards, hands):
         self.cards = cards
+        self.hands = hands
         self.numOfPlayers = numOfPlayers
         self.name = name
 
@@ -27,8 +28,14 @@ def inputName(numOfPlayers):
         nameList.append(name)
     return nameList
 
+def createHands(numOfPlayers, nameList):
+    hand = []
+    for i in range(numOfPlayers):
+        if numOfPlayers == 2:
+            
+
 # create cards and deal it to each player.
-def dealCards(numOfPlayers, nameList):
+def createCards(numOfPlayers, nameList):
     # 1. create cards.
     card = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] 
     # 2. create deck.
@@ -38,19 +45,8 @@ def dealCards(numOfPlayers, nameList):
     # to check cards and deck
     #print("deck has " + str(len(deck)) + " cards.")
     #print(deck)
-    hand = [] # players hand. first leer.
-    print("deal cards for " + str(numOfPlayers) + "players.")
-    # 4. deal cards to each player.
-    for i in range(numOfPlayers):
-        if numOfPlayers == 2:
-            playerCards = deck[i*7:(i+1)*7]
-        elif numOfPlayers == 3:
-            playerCards = deck[i*6:(i+1)*6]
-        elif numOfPlayers == 4:
-            playerCards = deck[i*5:(i+1)*5]
-        hand.append(playerCards)
-        print(nameList[i] + " has " + str(hand[i]))
-        return hand
+    return deck
+
 
 def main():
     print("")
