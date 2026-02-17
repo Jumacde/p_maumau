@@ -5,7 +5,7 @@ class Maumau():
 # input number of players
 def setNumOfPlayers():
     numOfPlayers = int(input("input number of players(2-4):"))
-    if 2 <=numOfPlayers <= 4:
+    if 2 <= numOfPlayers <= 4:
         print("player number is " + str(numOfPlayers))
         return numOfPlayers
     else:
@@ -13,6 +13,8 @@ def setNumOfPlayers():
         return setNumOfPlayers()
 
 def main():
+    print("")
+    print("welcome to maumau")
     setNumOfPlayers()
 
 if __name__ == "__main__":    
