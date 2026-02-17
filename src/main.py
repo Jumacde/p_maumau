@@ -29,13 +29,22 @@ def inputName(numOfPlayers):
 
 # create cards and deal it to each player.
 def dealCards(numOfPlayers, nameList):
+    # 1. create cards.
     card = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] 
+    # 2. create deck.
     deck = card * 4
+    # 3. shuffle deck.
     random.shuffle(deck)
     # to check cards and deck
     #print("deck has " + str(len(deck)) + " cards.")
     #print(deck)
+    hand = [] # players hand. first leer.
     print("deal cards for " + str(numOfPlayers) + "players.")
+    # 4. deal cards to each player.
+    for i in range(numOfPlayers):
+        hand.append(deck[i*5:(i+1)*5])
+        print(nameList[i] + " has " + str(hand[i]))
+
 
 
 def main():
