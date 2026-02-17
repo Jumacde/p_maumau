@@ -1,6 +1,10 @@
 class Maumau():
-    def __init__(self):
-        pass
+    def __init__(self, numOfPlayers, name):
+        self.numOfPlayers = numOfPlayers
+        self.name = name
+
+        setNumOfPlayers()
+        inputName(numOfPlayers)
 
 # input number of players
 def setNumOfPlayers():
@@ -12,10 +16,20 @@ def setNumOfPlayers():
         print("error: number of players must be between 2 and 4")   
         return setNumOfPlayers()
 
+# input number of players
+def inputName(numOfPlayers):
+    nameList = []
+    for i in range(numOfPlayers):
+        name = input("player" + str(i + 1)  + ": ")
+        nameList.append(name)
+    return nameList
+
 def main():
     print("")
     print("welcome to maumau")
-    setNumOfPlayers()
+    numOfPlayers = setNumOfPlayers()
+    nameList = inputName(numOfPlayers)
+    print(nameList)
 
 if __name__ == "__main__":    
     main()
