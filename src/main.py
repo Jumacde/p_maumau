@@ -75,7 +75,7 @@ def dealCard(cards, playerList, numOfPlayers):
     playground.append(fistCard) # the removed card is set on the playground.
     # check playgrround
     print("- playground: " + playground[0])
-    print("- rest cards: " + str(cards))
+    #print("- rest cards: " + str(cards))
     print( "- " + str(len(cards)) + "cards are there.")
 
     # deal 5 cards to each player.
@@ -121,7 +121,7 @@ def determinateWinner(playerList, hand, playground, numOfPlayers, cards):
     
     while len(playerList) > 1:
         # repeat doplay method until one of players win the game.
-        hand, playground = doPlay(cards, playerList, numOfPlayers, hand, playground)
+        hand, playground = doPlay(cards, playerList,  hand, playground)
         for name in playerList:
             if len(hand[name]) == 0:
                 rank = len(winnerList) + 1 # to show the winner ranking.
