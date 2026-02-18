@@ -45,8 +45,8 @@ def createCards():
             cards.append(num[i] + " : " + sym[j])
     random.shuffle(cards)
     # to check cards and deck
-    #print("deck has " + str(len(cards)) + " cards.")
-    #print(cards)
+    print("- deck has " + str(len(cards)) + " cards.")
+    print("-" + str(cards))
     # deal cards to each player. playerlist is used as players hand.
     return cards
 
@@ -58,26 +58,38 @@ def createCards():
 def dealCard(cards, playerList, numOfPlayers):
     playground = []
     # check index 0 one all cards
-    #print("card index 0: " + cards[0])
+    print("- card index 0: " + cards[0])
 
-    fistCard = cards.pop(0)
+    fistCard = cards.pop(0) 
     playground.append(fistCard) # the removed card is set on the playground.
     # check playgrround
-    #print("playground: " + playground[0])
-    #print("rest cards: " + str(cards))
-    #print( str(len(cards)) + "cards are there.")
-    return playground
+    print("- playground: " + playground[0])
+    print("- rest cards: " + str(cards))
+    print( "- " + str(len(cards)) + "cards are there.")
+
+    # deal 5 cards to each player.
+    hand = {} # dict to connect playername and dealt cards on each player(hand).
+    for name in playerList:
+            hand[name] = []
+            for j in range(5):
+                hand[name].append(cards.pop(0))
+            print("- " + name + "'s hand: " + str(hand[name]))
+            print("- " + name + "'s hand length: " + str(len(hand[name])))
+            # check rest cards after dealing.
+    
+    print("- rest cards: " + str(cards))
+    print("- " + str(len(cards)) + "cards are there.")    
+    return playground, hand
 
 
 def main():
     print("")
-    print("welcome to maumau")
+    print("<< welcome to maumau >>")
     numOfPlayers = setNumOfPlayers()
     playerList = inputName(numOfPlayers)
     cards = createCards()
 
-    print(playerList)
-    createCards()
+    #print(playerList)
     dealCard(cards, playerList, numOfPlayers)
 
 if __name__ == "__main__":    
