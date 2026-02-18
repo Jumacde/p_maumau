@@ -1,3 +1,4 @@
+from operator import index
 import random
 
 class Maumau():
@@ -90,7 +91,33 @@ def dealCard(cards, playerList, numOfPlayers):
 
 # method: play game.
 def doPlay(cards, playerList, numOfPlayers, hand, playground):
-    pass
+    # repeat player plays maumau until all player end the playpahse.
+    for i in range(numOfPlayers):
+        currentPlayer = playerList[i] # player who play at this turn
+        currentHand = hand[currentPlayer] # current hand of the player who play at this turn.
+        topCard = playground[-1] # top card on the playground.
+
+        # check current hand and play.
+        for card in currentHand:
+            cardIndex = currentHand[index]
+            # [0] is number, [1] is symbol.
+            # check whether a card players has same symbol or number with the one of the top card on the playground.
+            if cardIndex[0] == topCard[0] or cardIndex[-1] == topCard[-1]:
+                # remove the card.
+                removedCard = currentHand.pop(index)
+                # add the removed card on the playground.
+                playground.append(removedCard)
+                print("-" + currentPlayer + " set " + removedCard + "on the playground.")
+                print("- current playable card: " + playground[-1])            
+                break
+                        
+            # if the player has no playable card the they draws a card from the deck and add it to their hand.
+            else:
+                drawCard = cards.pop(-1)
+                currentHand.append(drawcard)
+                print("-" + currentPlayer + " has no playable card, so they draw a card")
+
+    return playground, hand
 
 def main():
     print("")
@@ -99,8 +126,7 @@ def main():
     numOfPlayers = setNumOfPlayers()
     playerList = inputName(numOfPlayers)
     cards = createCards()
-    hand, playground = dealCard(cards, playerList, numOfPlayers)
-
+    playground, hand = dealCard(cards, playerList, numOfPlayers)
     #print(playerList)
     doPlay(cards, playerList, numOfPlayers, hand, playground)
 
