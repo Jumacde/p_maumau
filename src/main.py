@@ -18,7 +18,6 @@ class Maumau():
         createCards() 
         dealCard(cards, playerList, numOfPlayers)
         doPlay(cards, playerList, numOfPlayers, hand, playground)
-        determinateWinner(playerList, hand, playground, numOfPlayers, cards)
 
 # input number of players
 # if you input wrong number and error occurs, this method will be called again until you input right number.
