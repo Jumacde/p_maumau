@@ -33,7 +33,7 @@ def inputName(numOfPlayers):
     return playerList
 
 
-# create cards and deal it to each player.
+# create cards and deal it to eac2h player.
 def createCards():
     # 1. create cards for maumau.
     num = ["7", "8", "9", "10", "J", "Q", "K", "A"] 
@@ -45,8 +45,8 @@ def createCards():
             cards.append(num[i] + " : " + sym[j])
     random.shuffle(cards)
     # to check cards and deck
-    print("deck has " + str(len(cards)) + " cards.")
-    print(cards)
+    #print("deck has " + str(len(cards)) + " cards.")
+    #print(cards)
     # deal cards to each player. playerlist is used as players hand.
     return cards
 
@@ -58,14 +58,15 @@ def createCards():
 def dealCard(cards, playerList, numOfPlayers):
     playground = []
     # check index 0 one all cards
-    print("card index 0: " + cards[0])
+    #print("card index 0: " + cards[0])
 
-    fistCard = cards.remove(0)
+    fistCard = cards.pop(0)
     playground.append(fistCard) # the removed card is set on the playground.
     # check playgrround
-    print("playground: " + playground[0])
-
-
+    #print("playground: " + playground[0])
+    #print("rest cards: " + str(cards))
+    #print( str(len(cards)) + "cards are there.")
+    return playground
 
 
 def main():
@@ -73,9 +74,11 @@ def main():
     print("welcome to maumau")
     numOfPlayers = setNumOfPlayers()
     playerList = inputName(numOfPlayers)
+    cards = createCards()
+
     print(playerList)
     createCards()
-    #dealCard(deck, playerList, numOfPlayers)
+    dealCard(cards, playerList, numOfPlayers)
 
 if __name__ == "__main__":    
     main()
