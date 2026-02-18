@@ -1,12 +1,13 @@
 import random
 
 class Maumau():
-    def __init__(self, numOfPlayers, name, cards, hands, playerList):
+    def __init__(self, numOfPlayers, name, cards, hands, playerList, playground):
         self.cards = cards
         self.hands = hands
         self.numOfPlayers = numOfPlayers
         self.name = name
         self.playerList = playerList
+        self.playground = playground
 
         setNumOfPlayers() # initialize this method to use this number for other methods.
         inputName(numOfPlayers) # initialize this method to use  names for other methods.
@@ -48,14 +49,22 @@ def createCards():
     print(cards)
     # deal cards to each player. playerlist is used as players hand.
     return cards
+
+""" 
+ deal card method:
+  1. a top card is set on the playground
+  2. 5 cards is dealt to each player.
 """
 def dealCard(cards, playerList, numOfPlayers):
-    # deal cards if already a rondom card is on the playground.
-    if len(cards) == 31:
-        for i in range(numOfPlayers):
-            playerList[i] 
-    pass
-"""
+    playground = []
+    # check index 0 one all cards
+    print("card index 0: " + cards[0])
+
+    fistCard = cards.remove(0)
+    playground.append(fistCard) # the removed card is set on the playground.
+    # check playgrround
+    print("playground: " + playground[0])
+
 
 
 
