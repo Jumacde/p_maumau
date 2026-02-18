@@ -1,18 +1,17 @@
 import random
 
 class Maumau():
-    def __init__(self, numOfPlayers, name, cards, hands, playerList, deck):
+    def __init__(self, numOfPlayers, name, cards, hands, playerList):
         self.cards = cards
         self.hands = hands
         self.numOfPlayers = numOfPlayers
         self.name = name
         self.playerList = playerList
-        self.deck = deck
 
         setNumOfPlayers() # initialize this method to use this number for other methods.
         inputName(numOfPlayers) # initialize this method to use  names for other methods.
         createCards() # initialize this method to use cards for other methods.
-        dealCard(deck, playerList, numOfPlayers)
+        dealCard(cards, playerList, numOfPlayers)
 
 # input number of players
 def setNumOfPlayers():
@@ -39,20 +38,20 @@ def createCards():
     num = ["7", "8", "9", "10", "J", "Q", "K", "A"] 
     sym = ["heart", "diamond", "club", "spade"]
     # 2. create deck and shuffle it.
-    deck = [] # first leer.
+    cards = [] # first leer.
     for i in range(len(num)):
         for j in range(len(sym)):
-            deck.append(num[i] + " : " + sym[j])
-    random.shuffle(deck)
+            cards.append(num[i] + " : " + sym[j])
+    random.shuffle(cards)
     # to check cards and deck
-    print("deck has " + str(len(deck)) + " cards.")
-    print(deck)
+    print("deck has " + str(len(cards)) + " cards.")
+    print(cards)
     # deal cards to each player. playerlist is used as players hand.
-    return deck
+    return cards
 """
-def dealCard(deck, playerList, numOfPlayers):
+def dealCard(cards, playerList, numOfPlayers):
     # deal cards if already a rondom card is on the playground.
-    if len(deck) == 31:
+    if len(cards) == 31:
         for i in range(numOfPlayers):
             playerList[i] 
     pass
