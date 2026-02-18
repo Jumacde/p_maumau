@@ -1,18 +1,20 @@
 import random
 
 class Maumau():
-    def __init__(self, numOfPlayers, name, cards, hands, playerList, playground):
+    def __init__(self, numOfPlayers, name, cards, hands, playerList, playground, hand):
         self.cards = cards
         self.hands = hands
         self.numOfPlayers = numOfPlayers
         self.name = name
         self.playerList = playerList
         self.playground = playground
+        self.hand = hand
 
         setNumOfPlayers() # initialize this method to use this number for other methods.
         inputName(numOfPlayers) # initialize this method to use  names for other methods.
         createCards() # initialize this method to use cards for other methods.
         dealCard(cards, playerList, numOfPlayers)
+        doPlay(cards, playerList, numOfPlayers, hand, playground)
 
 # input number of players
 # if you input wrong number and error occurs, this method will be called again until you input right number.
@@ -86,16 +88,21 @@ def dealCard(cards, playerList, numOfPlayers):
     print("- " + str(len(cards)) + "cards are there.")    
     return playground, hand
 
+# method: play game.
+def doPlay(cards, playerList, numOfPlayers, hand, playground):
+    pass
 
 def main():
     print("")
     print("<< welcome to maumau >>")
+    # execute each methods and use the returned values for next methods.
     numOfPlayers = setNumOfPlayers()
     playerList = inputName(numOfPlayers)
     cards = createCards()
+    hand, playground = dealCard(cards, playerList, numOfPlayers)
 
     #print(playerList)
-    dealCard(cards, playerList, numOfPlayers)
+    doPlay(cards, playerList, numOfPlayers, hand, playground)
 
 if __name__ == "__main__":    
     main()
