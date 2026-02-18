@@ -7,8 +7,8 @@ class Maumau():
         self.numOfPlayers = numOfPlayers
         self.name = name
 
-        setNumOfPlayers()
-        inputName(numOfPlayers)
+        setNumOfPlayers() # initialize this method to use this number for other methods.
+        inputName(numOfPlayers) # initialize this method to use  names for other methods.
 
 # input number of players
 def setNumOfPlayers():
@@ -22,29 +22,25 @@ def setNumOfPlayers():
 
 # input number of players.
 def inputName(numOfPlayers):
-    nameList = []
+    playerList = []
     for i in range(numOfPlayers):
         name = input("player" + str(i + 1)  + ": ")
-        nameList.append(name)
-    return nameList
+        playerList.append(name)
+    return playerList
 
-def createHands(numOfPlayers, nameList):
-    hand = []
-    for i in range(numOfPlayers):
-        if numOfPlayers == 2:
-            
 
 # create cards and deal it to each player.
-def createCards(numOfPlayers, nameList):
-    # 1. create cards.
-    card = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] 
-    # 2. create deck.
-    deck = card * 4
-    # 3. shuffle deck.
+def dealCards(numOfPlayers, nameList):
+    # 1. create cards for maumau.
+    cards = ["7", "8", "9", "10", "J", "Q", "K", "A"] 
+    # 2. create deck and shuffle it.
+    deck = cards * 4
     random.shuffle(deck)
     # to check cards and deck
     #print("deck has " + str(len(deck)) + " cards.")
     #print(deck)
+
+    # deal cards to each player. playerlist is used as players hand.
     return deck
 
 
@@ -52,9 +48,9 @@ def main():
     print("")
     print("welcome to maumau")
     numOfPlayers = setNumOfPlayers()
-    nameList = inputName(numOfPlayers)
-    print(nameList)
-    dealCards(numOfPlayers, nameList)
+    playerList = inputName(numOfPlayers)
+    print(playerList)
+    dealCards(numOfPlayers, playerList)
 
 if __name__ == "__main__":    
     main()
