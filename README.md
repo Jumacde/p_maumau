@@ -28,6 +28,11 @@ create card than a list(cards-List).
  3.3. shuffle the cards-list
 4.  dealCards():
  a top of card is set on the playground and 5 cards are dealt to each player.
+ 
+ - playgound(desk), deck, card, hand are created as list or dictionaly.
+    set a card on the playground == remove a card from hand and add it on the playground-list.
+    draw a card == the top card is removed from the deck and it added on the hand.
+
  - a leer dictionaly is used here to connect dealt card and player.
     1. create a leer dictionaly
     hand = {} 

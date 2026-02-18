@@ -1,4 +1,4 @@
-from operator import index
+
 import random
 
 class Maumau():
@@ -98,7 +98,7 @@ def doPlay(cards, playerList, numOfPlayers, hand, playground):
         topCard = playground[-1] # top card on the playground.
 
         # check current hand and play.
-        for card in currentHand:
+        for index, card in enumerate(currentHand):
             cardIndex = currentHand[index]
             # [0] is number, [1] is symbol.
             # check whether a card players has same symbol or number with the one of the top card on the playground.
@@ -110,14 +110,9 @@ def doPlay(cards, playerList, numOfPlayers, hand, playground):
                 print("-" + currentPlayer + " set " + removedCard + "on the playground.")
                 print("- current playable card: " + playground[-1])            
                 break
-                        
-            # if the player has no playable card the they draws a card from the deck and add it to their hand.
-            else:
-                drawCard = cards.pop(-1)
-                currentHand.append(drawcard)
-                print("-" + currentPlayer + " has no playable card, so they draw a card")
+            
 
-    return playground, hand
+    return hand, playground
 
 def main():
     print("")
@@ -126,7 +121,7 @@ def main():
     numOfPlayers = setNumOfPlayers()
     playerList = inputName(numOfPlayers)
     cards = createCards()
-    playground, hand = dealCard(cards, playerList, numOfPlayers)
+    hand, playground = dealCard(cards, playerList, numOfPlayers)
     #print(playerList)
     doPlay(cards, playerList, numOfPlayers, hand, playground)
 
