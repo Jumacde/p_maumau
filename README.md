@@ -1,11 +1,18 @@
 # p_maumau
 try cording mau-mau by python
+<<win-rule>>
+each player set a card which has same number or symbol like the top card on the playground.
+who has no card on their hand is the winner. 
+
 <<game-flow>>:
 1. set number of players maumau (2-4).
 2. give name each player.
 3. a top-card of deck is set on the playground.
 4. deal 5 cards to each player.
-5. beginn game. player1 who has index0 on playerlist(you) plays 1st turn.
+5. beginn game. player1 who has index0 on playerlist(you) plays 1st turn. 
+ 5.1. the player1 set a card which has same symbol or number like the card from phase 3 on the desk.
+ 5.2. if you has no card to set on the desk draw a card from the deck.
+ 5.3. repat this phase 5 each player until a player has no card on thier hand.
 
 ----------------
 <<about methods>>
