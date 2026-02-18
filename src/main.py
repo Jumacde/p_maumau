@@ -15,13 +15,18 @@ class Maumau():
         dealCard(cards, playerList, numOfPlayers)
 
 # input number of players
+# if you input wrong number and error occurs, this method will be called again until you input right number.
 def setNumOfPlayers():
-    numOfPlayers = int(input("input number of players(2-4):"))
-    if 2 <= numOfPlayers <= 4:
-        print("player number is " + str(numOfPlayers))
-        return numOfPlayers
-    else:
-        print("error: number of players must be between 2 and 4")   
+    try:
+        numOfPlayers = int(input("input number of players(2-4):"))
+        if 2 <= numOfPlayers <= 4:
+            print("player number is " + str(numOfPlayers))
+            return numOfPlayers
+        else:
+            print("error: number of players must be between 2 and 4")   
+            return setNumOfPlayers()
+    except ValueError:
+        print("error: input must be an integer")   
         return setNumOfPlayers()
 
 # input number of players.
@@ -70,9 +75,9 @@ def dealCard(cards, playerList, numOfPlayers):
     # deal 5 cards to each player.
     hand = {} # dict to connect playername and dealt cards on each player(hand).
     for name in playerList:
-            hand[name] = []
-            for j in range(5):
-                hand[name].append(cards.pop(0))
+            hand[name] = [] # leer space to set dielt cards.
+            for j in range(5): # set number of cards to deal. = 5 cards dieal.
+                hand[name].append(cards.pop(0)) #  the removed card is set on each player.
             print("- " + name + "'s hand: " + str(hand[name]))
             print("- " + name + "'s hand length: " + str(len(hand[name])))
             # check rest cards after dealing.
