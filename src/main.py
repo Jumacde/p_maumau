@@ -2,7 +2,7 @@
 import random
 
 class Maumau():
-    def __init__(self, numOfPlayers, name, cards, hands, playerList, playground, hand):
+    def __init__(self, numOfPlayers, name, cards, hands, playerList, playground, hand, winnerLsit):
         self.cards = cards
         self.hands = hands
         self.numOfPlayers = numOfPlayers
@@ -10,12 +10,15 @@ class Maumau():
         self.playerList = playerList
         self.playground = playground
         self.hand = hand
+        self.winnerList = winnerLsit
 
-        setNumOfPlayers() # initialize this method to use this number for other methods.
-        inputName(numOfPlayers) # initialize this method to use  names for other methods.
-        createCards() # initialize this method to use cards for other methods.
+        # initialize methods to use the result of this for other methods.
+        setNumOfPlayers() 
+        inputName(numOfPlayers) 
+        createCards() 
         dealCard(cards, playerList, numOfPlayers)
         doPlay(cards, playerList, numOfPlayers, hand, playground)
+        determinateWinner(playerList, hand, playground, numOfPlayers, cards)
 
 # input number of players
 # if you input wrong number and error occurs, this method will be called again until you input right number.
@@ -90,9 +93,9 @@ def dealCard(cards, playerList, numOfPlayers):
     return hand, playground
 
 # method: play game.
-def doPlay(cards, playerList, numOfPlayers, hand, playground):
+def doPlay(cards, playerList, hand, playground):
     # repeat player plays maumau until all player end the playpahse.
-    for i in range(numOfPlayers):
+    for i in range(len(playerList)):
         currentPlayer = playerList[i] # player who play at this turn
         currentHand = hand[currentPlayer] # current hand of the player who play at this turn.
         topCard = playground[-1] # top card on the playground.
@@ -110,9 +113,28 @@ def doPlay(cards, playerList, numOfPlayers, hand, playground):
                 print("-" + currentPlayer + " set " + removedCard + "on the playground.")
                 print("- current playable card: " + playground[-1])            
                 break
-            
-
     return hand, playground
+
+def determinateWinner(playerList, hand, playground, numOfPlayers, cards):
+    # to show winner ranking after the game ends.
+    winnerList = {}
+    
+    while len(playerList) > 1:
+        # repeat doplay method until one of players win the game.
+        hand, playground = doPlay(cards, playerList, numOfPlayers, hand, playground)
+        for name in playerList:
+            if len(hand[name]) == 0:
+                rank = len(winnerList) + 1 # to show the winner ranking.
+                winnerList[name] = rank
+                print("- " + name + " wins!")
+                playerList.remove(name) # remove the winner from playerlist to end the game.
+
+    # the last player is added to winnerlist.
+    lastplayer = playerList[0]
+    winnerList[len(winnerList) + 1] = lastplayer
+    print("- " + lastplayer + " is the last player.")
+    return winnerList
+
 
 def main():
     print("")
@@ -123,7 +145,8 @@ def main():
     cards = createCards()
     hand, playground = dealCard(cards, playerList, numOfPlayers)
     #print(playerList)
-    doPlay(cards, playerList, numOfPlayers, hand, playground)
+    #doPlay(cards, playerList, numOfPlayers, hand, playground) # to check this method.
+    determinateWinner(playerList, hand, playground, numOfPlayers, cards)
 
 if __name__ == "__main__":    
     main()
