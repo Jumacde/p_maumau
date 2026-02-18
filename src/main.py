@@ -37,7 +37,7 @@ def inputName(numOfPlayers):
 def createCards():
     # 1. create cards for maumau.
     num = ["7", "8", "9", "10", "J", "Q", "K", "A"] 
-    sym = ["heart", "diamond", "club", "spade"]
+    sym = ["♥", "♦", "♣", "♠"]
     # 2. create deck and shuffle it.
     cards = [] # first leer.
     for i in range(len(num)):
