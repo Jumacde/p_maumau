@@ -21,3 +21,14 @@ create card than a list(cards-List).
  3.3. shuffle the cards-list
 4.  dealCards():
  a top of card is set on the playground and 5 cards are dealt to each player.
+ - a leer dictionaly is used here to connect dealt card and player.
+    1. create a leer dictionaly
+    hand = {} 
+    2. connect each player and diealt cards and do deal.
+    for name in playerList:
+            - connect player by name and the dictionaly.
+            hand[name] = [] 
+            - deal 5 cards once to each player. == add 5 cards in each players list in the dictionaly.
+            for j in range(5): # deal cards 5 times.
+                hand[name].append(cards.pop(0)) # the top cards is removed from the deck and it is added on each players hand.
+ -
