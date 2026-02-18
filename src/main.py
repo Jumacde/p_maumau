@@ -9,6 +9,7 @@ class Maumau():
 
         setNumOfPlayers() # initialize this method to use this number for other methods.
         inputName(numOfPlayers) # initialize this method to use  names for other methods.
+        createCards
 
 # input number of players
 def setNumOfPlayers():
@@ -30,7 +31,7 @@ def inputName(numOfPlayers):
 
 
 # create cards and deal it to each player.
-def dealCards(numOfPlayers, nameList):
+def createCards():
     # 1. create cards for maumau.
     cards = ["7", "8", "9", "10", "J", "Q", "K", "A"] 
     # 2. create deck and shuffle it.
@@ -50,7 +51,7 @@ def main():
     numOfPlayers = setNumOfPlayers()
     playerList = inputName(numOfPlayers)
     print(playerList)
-    dealCards(numOfPlayers, playerList)
+    createCards()
 
 if __name__ == "__main__":    
     main()
