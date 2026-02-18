@@ -87,7 +87,7 @@ def dealCard(cards, playerList, numOfPlayers):
     
     print("- rest cards: " + str(cards))
     print("- " + str(len(cards)) + "cards are there.")    
-    return playground, hand
+    return hand, playground
 
 # method: play game.
 def doPlay(cards, playerList, numOfPlayers, hand, playground):
